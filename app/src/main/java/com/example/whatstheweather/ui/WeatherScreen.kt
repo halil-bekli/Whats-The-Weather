@@ -1,5 +1,6 @@
 package com.example.whatstheweather.ui
 
+import android.location.Location
 import androidx.compose.animation.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -31,40 +32,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
-fun WeatherScreen(
-    modifier: Modifier = Modifier,
-    viewModel: WeatherViewModel = viewModel()
-) {
-    val weatherState by viewModel.weatherState.collectAsState()
-    
-    Surface(
-        modifier = modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column {
-            // Title Bar
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 24.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = getLocalizedString("AppTitle"),
-                    style = MaterialTheme.typography.headlineLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-            }
-
-            // Content
-            when (val state = weatherState) {
-                is WeatherState.Loading -> LoadingScreen()
-                is WeatherState.Success -> WeatherList(forecasts = state.forecasts)
-                is WeatherState.Error -> ErrorScreen(message = state.message)
-            }
-        }
+fun WeatherScreen(location: Location) {
+    Column {
+       Text("Weather Screen")
     }
 }
 
@@ -364,4 +334,4 @@ private fun getLocalizedString(key: String, value: String = ""): String {
             else -> key
         }
     } + value
-} 
+}
