@@ -8,7 +8,11 @@ import java.io.IOException
 
 class OpenWeatherService : WeatherService {
     companion object {
-        private const val apiKey = "d7b9e55b3afcf57daf53a2026ea85e98" // Replace with your API key
+
+        private const val apiKey = "" // Replace with your API key
+        // Fill it from local.properties and .gitignore it
+
+
     }
 
     override suspend fun getWeatherData(location: String): WeatherInfo {
